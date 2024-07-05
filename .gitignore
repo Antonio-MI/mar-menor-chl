@@ -3,6 +3,8 @@ boyaUPCT
 piezometros
 Ramblas
 Registro_Ramblas_MARMENOR.xlsx
+locCanalMarMenor.xlsx
 .ipynb_checkpoints
 .python-version
 .~lock.Registro_Ramblas_MARMENOR.xlsx#
+__pycache__
