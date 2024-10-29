@@ -1,8 +1,6 @@
 import pandas as pd
 import requests
 import configparser
-import subprocess
-import json
 import requests
 import configparser
 
