@@ -1,3 +1,5 @@
+# From https://custom-scripts.sentinel-hub.com/custom-scripts/sentinel/sentinel-2/
+
 evalscript_ndwi_array = """
     //VERSION=3
 
