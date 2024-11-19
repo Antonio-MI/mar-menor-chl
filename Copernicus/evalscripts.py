@@ -7,7 +7,7 @@ evalscript_ndwi_array = """
         return {
             input: ["B03", "B08"],
             output: {
-                id: "default",       // Identifier for the output
+                id: "index",       // Identifier for the output
                 bands: 1,
                 sampleType: "FLOAT32"
             }
