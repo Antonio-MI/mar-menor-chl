@@ -1,4 +1,4 @@
-Date,Buoy,Latitude,Longitude,Band_1,Band_2,Band_3,Band_4,Band_5,Band_6,Band_7,Band_8,Band_9,Band_10,Band_11,Band_12,Band_13,Value
+Date,Buoy,Latitude,Longitude,Band_1,Band_2,Band_3,Band_4,Band_5,Band_6,Band_7,Band_8,Band_9,Band_10,Band_11,Band_12,Band_13,Chl
 2024-04-24,CTD1,37.8118,-0.784483,9,10,10,7,7,7,7,7,6,5,6,6,255,0.5638234166666667
 2024-04-24,CTD2,37.760617,-0.8078,10,11,11,7,7,6,7,7,6,5,6,5,255,0.6769638425000001
 2024-04-24,CTD3,37.761783,-0.78355,10,10,10,6,6,5,6,6,5,4,5,4,255,0.43299109375
