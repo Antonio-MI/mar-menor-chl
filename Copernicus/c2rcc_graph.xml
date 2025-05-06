@@ -1,0 +1,39 @@
+<graph id="c2rcc_after_subset_graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <parameters>
+      <file>/ruta/al/archivo.SAFE</file>
+    </parameters>
+  </node>
+  <node id="C2RCC">
+    <operator>C2RCC</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+    <parameters>
+      <useC2x>true</useC2x>
+    </parameters>
+  </node>
+  <node id="Subset">
+    <operator>Subset</operator>
+    <sources>
+      <sourceProduct refid="C2RCC"/>
+    </sources>
+    <parameters>
+      <geoRegion>POLYGON((-0.866977 37.628916, -0.866977 37.822802, -0.71696 37.822802, -0.71696 37.628916, -0.866977 37.628916))</geoRegion>
+      <copyMetadata>true</copyMetadata>
+    </parameters>
+  </node>
+  <node id="Write">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="Subset"/>
+    </sources>
+    <parameters>
+      <file>/ruta/de/salida/c2rcc_aoi.tif</file>
+      <formatName>GeoTIFF</formatName>
+    </parameters>
+  </node>
+</graph>
+
