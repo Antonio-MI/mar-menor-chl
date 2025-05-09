@@ -1,45 +1,24 @@
-<graph id="c2rcc_subset_resample_graph">
+<graph id="Graph">
   <version>1.0</version>
   <node id="Read">
     <operator>Read</operator>
     <sources/>
-    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+    <parameters>
       <useAdvancedOptions>false</useAdvancedOptions>
-      <file>/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads/S2A_MSIL1C_20190625T105031_N0500_R051_T30SXG_20230713T103657.SAFE.zip</file>
-      <formatName>SENTINEL-2-MSI-MultiRes-UTM30N</formatName>
-      <copyMetadata>true</copyMetadata>
-      <bandNames/>
-      <pixelRegion>0,0,10980,10980</pixelRegion>
-      <maskNames/>
-    </parameters>
-  </node>
-  <node id="Subset">
-    <operator>Subset</operator>
-    <sources>
-      <sourceProduct refid="Read"/>
-    </sources>
-    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <sourceBands/>
-      <tiePointGrids/>
-      <region>0,0,0,0</region>
-      <referenceBand>B5</referenceBand>
-      <geoRegion>POLYGON ((-0.8669769763946533 37.6289176940918, -0.7169600129127502 37.6289176940918, -0.7169600129127502 37.82280349731445, -0.8669769763946533 37.82280349731445, -0.8669769763946533 37.6289176940918, -0.8669769763946533 37.6289176940918))</geoRegion>
-      <subSamplingX>1</subSamplingX>
-      <subSamplingY>1</subSamplingY>
-      <fullSwath>false</fullSwath>
+      <file>/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads/S2A_MSIL1C_20180131T105251_N0500_R051_T30SXG_20230916T185601.SAFE.zip</file>
       <copyMetadata>true</copyMetadata>
     </parameters>
   </node>
   <node id="Resample">
     <operator>Resample</operator>
     <sources>
-      <sourceProduct refid="Subset"/>
+      <sourceProduct refid="Read"/>
     </sources>
-    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+    <parameters>
       <referenceBand/>
       <targetWidth/>
       <targetHeight/>
-      <targetResolution>20</targetResolution>
+      <targetResolution>10</targetResolution>
       <upsampling>Nearest</upsampling>
       <downsampling>First</downsampling>
       <flagDownsampling>First</flagDownsampling>
@@ -53,24 +32,10 @@
     <sources>
       <sourceProduct refid="Resample"/>
     </sources>
-    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <file>/ruta/de/salida/c2rcc_aoi_resampled.tif</file>
+    <parameters>
+      <file>/home/antonio/Descargas/target.tif</file>
       <formatName>GeoTIFF</formatName>
     </parameters>
   </node>
-  <applicationData id="Presentation">
-    <Description/>
-    <node id="Read">
-      <displayPosition x="23.0" y="184.0"/>
-    </node>
-    <node id="Subset">
-      <displayPosition x="144.0" y="164.0"/>
-    </node>
-    <node id="Resample">
-      <displayPosition x="292.0" y="151.0"/>
-    </node>
-    <node id="Write">
-      <displayPosition x="444.0" y="162.0"/>
-    </node>
-  </applicationData>
+
 </graph>

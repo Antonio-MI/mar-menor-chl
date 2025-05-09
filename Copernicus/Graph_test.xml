@@ -1,0 +1,37 @@
+<graph id="resample_10m_graph">
+  <version>1.0</version>
+
+  <node id="Read">
+    <operator>Read</operator>
+    <parameters>
+      <file>/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads/S2A_MSIL1C_20180131T105251_N0500_R051_T30SXG_20230916T185601.SAFE.zip</file> 
+    </parameters>
+  </node>
+
+  <node id="Resample">
+    <operator>Resample</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+      <parameters>
+        <targetResolution>10</targetResolution>
+        <upsampling>${up}</upsampling>
+        <downsampling>${down}</downsampling>
+        <flagDownsampling>${flag}</flagDownsampling>
+        <resampleOnPyramidLevels>true</resampleOnPyramidLevels>
+      </parameters>  
+  </node>
+
+  <node id="Write">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="Resample"/>
+    </sources>
+    <parameters>
+      <file>snap_output_test/output.tif</file>
+      <formatName>GeoTIFF</formatName>
+    </parameters>
+  </node>
+
+</graph>
+
