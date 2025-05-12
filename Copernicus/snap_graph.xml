@@ -6,7 +6,7 @@
     <sources/>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
       <useAdvancedOptions>false</useAdvancedOptions>
-      <file>/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads/S2A_MSIL1C_20180131T105251_N0500_R051_T30SXG_20230916T185601.SAFE.zip</file>
+      <file>${inputFile}</file>
       <copyMetadata>true</copyMetadata>
     </parameters>
   </node>
@@ -20,7 +20,7 @@
       <referenceBand/>
       <targetWidth/>
       <targetHeight/>
-      <targetResolution>10</targetResolution>
+      <targetResolution>${resampleResolution}</targetResolution>
       <upsampling>Nearest</upsampling>
       <downsampling>First</downsampling>
       <flagDownsampling>First</flagDownsampling>
@@ -40,7 +40,7 @@
       <tiePointGrids/>
       <region>0,0,0,0</region>
       <referenceBand/>
-      <geoRegion>POLYGON((-0.867 37.62, -0.867 37.82, -0.7 37.82, -0.7 37.62, -0.867 37.62))</geoRegion>
+      <geoRegion>${geoRegion}</geoRegion>
       <subSamplingX>1</subSamplingX>
       <subSamplingY>1</subSamplingY>
       <fullSwath>false</fullSwath>
@@ -54,8 +54,8 @@
 	<sourceProduct refid="Subset1"/>
     </sources>
      <parameters>
-      <salinity>42</salinity>
-      <temperature>20</temperature>
+      <salinity>${salinity}</salinity>
+      <temperature>${temperature}</temperature>
       <ozone>330</ozone>
       <press>1000</press>
       <TSMfakBpart>1.72</TSMfakBpart>
@@ -65,18 +65,18 @@
       <thresholdRtosaOOS>0.005</thresholdRtosaOOS>
       <thresholdAcReflecOos>0.1</thresholdAcReflecOos>
       <thresholdCloudTDown865>0.955</thresholdCloudTDown865>
-      <netSet>C2X-Nets</netSet>
+      <netSet>${netSet}</netSet>
       <outputAsRrs>false</outputAsRrs>
       <deriveRwFromPathAndTransmittance>false</deriveRwFromPathAndTransmittance>
       <useEcmwfAuxData>true</useEcmwfAuxData>
-      <outputRtoa>false</outputRtoa>
+      <outputRtoa>${outputRtoa}</outputRtoa>
       <outputRtosaGc>false</outputRtosaGc>
       <outputRtosaGcAann>false</outputRtosaGcAann>
       <outputRpath>false</outputRpath>
       <outputTdown>false</outputTdown>
       <outputTup>false</outputTup>
-      <outputAcReflectance>true</outputAcReflectance>
-      <outputRhown>true</outputRhown>
+      <outputAcReflectance>${outputAcReflectance}</outputAcReflectance>
+      <outputRhown>${outputRhown}</outputRhown>
       <outputOos>false</outputOos>
       <outputKd>false</outputKd>
       <outputUncertainties>false</outputUncertainties>
@@ -89,7 +89,7 @@
     <sourceProduct refid="C2RCC"/>
   </sources>
   <parameters>
-    <sourceBands>rhow_B2,rhow_B3,rhow_B4</sourceBands>
+    <sourceBands>${bandSubset}</sourceBands>
     <copyMetadata>true</copyMetadata>
   </parameters>
   </node>
@@ -100,7 +100,7 @@
       <sourceProduct refid="Subset2"/>
     </sources>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <file>/home/antonio/Descargas/Subset_S2A_MSIL1C_20180131T105251_N0500_R051_T30SXG_20230916T185601_resampled.tif</file>
+      <file>${outputFile}</file>
       <formatName>GeoTIFF</formatName>
     </parameters>
   </node>
