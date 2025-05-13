@@ -101,7 +101,7 @@
     </sources>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
       <file>${outputFile}</file>
-      <formatName>GeoTIFF</formatName>
+      <formatName>${outputFormat}</formatName>
     </parameters>
   </node>
 
