@@ -2,7 +2,7 @@
 
 GRAPH_XML="snap_graph.xml"
 TEMPLATE_PARAMS="snap_graph.properties"
-INPUT_DIR="/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads/new"
+INPUT_DIR="/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads"
 OUTPUT_DIR="/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads/processed"
 GPT="/home/antonio/esa-snap/bin/gpt"
 OUTPUT_FORMAT="tif"
@@ -10,7 +10,7 @@ OUTPUT_FORMAT="tif"
 # Para filtrar por fechas
 
 FILTER_DATES=(
-  20160809 20160908 20190730 20190928 20210520 20211126 20220729 20220927
+  20230301 20211201
 )
 
 
