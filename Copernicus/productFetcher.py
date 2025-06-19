@@ -21,10 +21,7 @@ bucket = s3.Bucket("eodata")
 
 
 fechas_str = [
-    '2023-12-07', '2023-12-13', '2023-12-19', '2023-12-27',
-    '2024-01-03', '2024-01-09', '2024-01-16', '2024-01-23',
-    '2024-02-01', '2024-02-06', '2024-02-13', '2024-02-20',
-    '2024-03-07', '2024-03-13', '2024-03-20', '2024-03-26'
+    '2021-09-12'
 ]
 
 
@@ -34,8 +31,8 @@ fechas = [datetime.datetime.strptime(f, "%Y-%m-%d").date() for f in fechas_str]
 # Tile ID a buscar
 tile_id = "30SXG"
 
-# Prefijos base de búsqueda (antes era L1C_N0500)
-prefixes = [f"Sentinel-2/MSI/L1C/{fecha.year}/{fecha.month:02d}/{fecha.day:02d}/" for fecha in fechas]
+# Prefijos base de búsqueda: L1C_N0500 o L1C
+prefixes = [f"Sentinel-2/MSI/L1C_N0500/{fecha.year}/{fecha.month:02d}/{fecha.day:02d}/" for fecha in fechas]
 
 # Carpeta local destino
 output_dir = "SAFE_downloads"
