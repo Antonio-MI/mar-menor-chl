@@ -13,7 +13,7 @@ import numpy as np
 
 #year = 2022
 start = datetime(2017, 6, 1)
-end = datetime(2018, 12, 31)
+end = datetime(2017, 6, 30)
 cloud_cover_limit = 90
 folder = "/home/thinking/raw/sentinelAntonioMIFloat32/"
 
@@ -74,9 +74,10 @@ def download_image_copernicus(access_token, time_interval, image_type, aoi, eval
         DataCollection.SENTINEL2_L2A,
         bbox=aoi_bbox,
         time= date_range ,
-        fields={"include": ["id", "properties.eo:cloud_cover"], "exclude": [ "properties.datetime"]},
+        #fields={"include": ["properties"]},
     )
     results = list(search_iterator)
+    print(results)
     unique_results = {}
     # A partir del id guardamos las fechas
     for item in results:
@@ -213,10 +214,7 @@ ends = [(start + timedelta(days=4) + i * tdelta).date().isoformat() for i in ran
 
 # Slots que nos interesan de las fechas que están sincronizadas
 target_dates = [
-    "2017-06-30", "2018-01-31", "2018-02-20", "2018-03-07", "2018-05-11", "2018-05-16",
-    "2018-06-20", "2018-07-10", "2018-08-09", "2018-08-14", "2018-08-29", "2018-10-03",
-    "2018-11-07"
-]
+    "2017-06-30"]
 # target_dates = [
 #     "2017-06-30", "2018-01-31", "2018-02-20", "2018-03-07", "2018-05-11", "2018-05-16",
 #     "2018-06-20", "2018-07-10", "2018-08-09", "2018-08-14", "2018-08-29", "2018-10-03",
