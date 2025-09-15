@@ -1,16 +1,16 @@
 #!/bin/bash
 
-GRAPH_XML="snap_graph_subset_aoi.xml"
-TEMPLATE_PARAMS="snap_graph_subset_aoi.properties"
+GRAPH_XML="snap_graph_application.xml"
+TEMPLATE_PARAMS="snap_graph_application.properties"
 INPUT_DIR="/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads"
-OUTPUT_DIR="/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads/subset_aoi"
+OUTPUT_DIR="/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads/application"
 GPT="/home/antonio/esa-snap/bin/gpt"
 OUTPUT_FORMAT="tif"
 
 # Para filtrar por fechas
 
 FILTER_DATES=(
-  20180220
+    20160908 20220714 20230420
 )
 
 
@@ -34,14 +34,15 @@ for input_file in "$INPUT_DIR"/*.SAFE.zip; do
         continue
     fi
 
-    suffix="aoi_subset"
     # Leer el tipo de red desde la plantilla
-    # net=$(grep "^netSet=" "$TEMPLATE_PARAMS" | cut -d= -f2 | tr -d '[:space:]')
-    # if [[ "$net" == "C2X-COMPLEX-Nets" ]]; then
-    #     suffix="C2XComplexNets"
-    # else
-    #     suffix="C2XNets"
-    # fi
+    net=$(grep "^netSet=" "$TEMPLATE_PARAMS" | cut -d= -f2 | tr -d '[:space:]')
+    if [[ "$net" == "C2X-COMPLEX-Nets" ]]; then
+        suffix="C2XComplexNets"
+    elif [[ "$net" == "C2X-Nets" ]]; then
+        suffix="C2XNets"
+    else
+        suffix="C2RCCNets"
+    fi
 
     output_file="$OUTPUT_DIR/${base_name}_${suffix}_10m.${OUTPUT_FORMAT}"
 
