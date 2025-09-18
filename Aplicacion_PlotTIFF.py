@@ -54,6 +54,7 @@ cb1 = plt.colorbar(im1, ax=axes[0], fraction=0.046, pad=0.04)
 cb1.set_ticks(tick_locs)
 cb1.set_ticklabels(tick_labels)
 cb1.ax.tick_params(labelsize=7)
+cb1.set_label("Chl mg/m³", fontsize=8, labelpad=5)
 
 # === Segundo subplot ===
 im2 = axes[1].imshow(data2, cmap=custom_cmap, norm=norm)
@@ -62,6 +63,7 @@ cb2 = plt.colorbar(im2, ax=axes[1], fraction=0.046, pad=0.04)
 cb2.set_ticks(tick_locs)
 cb2.set_ticklabels(tick_labels)
 cb2.ax.tick_params(labelsize=7)
+cb2.set_label("Chl mg/m³", fontsize=8, labelpad=5)
 
 for ax in axes:
     ax.axis('off')

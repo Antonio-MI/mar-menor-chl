@@ -3,9 +3,9 @@ import numpy as np
 import rasterio
 from rasterio.transform import from_origin
 
-df = pd.read_csv('saved_files/application/2022-07-14_pred.csv')
+df = pd.read_csv('saved_files/application/preds/2022-07-14_pred.csv')
 
-depth = "0_1"
+depth = "2_3"
 
 value_column = f'Chl_pred_{depth}'
 
