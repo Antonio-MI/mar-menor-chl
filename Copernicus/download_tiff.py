@@ -10,12 +10,13 @@ from sentinelhub import BBox, bbox_to_dimensions, CRS
 from typing import Any, Optional, Tuple
 import matplotlib.pyplot as plt
 import numpy as np
+import json
 
 #year = 2022
 start = datetime(2017, 6, 1)
 end = datetime(2017, 6, 30)
 cloud_cover_limit = 90
-folder = "/home/thinking/raw/sentinelAntonioMIFloat32/"
+folder = "test_dir"
 
 ## Function to retrieve access token
 
@@ -42,6 +43,28 @@ def get_access_token(username: str, password: str) -> str:
         print(f"Request failed: {e}")
         return None
 
+
+def extract_metadata(results):
+    """Extrae metadatos relevantes de Sentinel Hub Catalog results."""
+    metadata_list = []
+    for r in results:
+        props = r.get("properties", {})
+        assets = r.get("assets", {})
+        
+        metadata = {
+            "id": r.get("id"),
+            "platform": props.get("platform"),
+            "instrument": props.get("instruments", [None])[0],
+            "datetime": props.get("datetime"),
+            "bbox": r.get("bbox"),
+            "epsg": props.get("proj:epsg"),
+            "proj_bbox": props.get("proj:bbox"),
+            "cloud_cover": props.get("eo:cloud_cover"),
+            "gsd": props.get("gsd"),
+            "s3_href": assets.get("data", {}).get("href"),
+        }
+        metadata_list.append(metadata)
+    return metadata_list
 
 config_file = configparser.ConfigParser()
 config_file.read("config.ini")
@@ -74,10 +97,12 @@ def download_image_copernicus(access_token, time_interval, image_type, aoi, eval
         DataCollection.SENTINEL2_L2A,
         bbox=aoi_bbox,
         time= date_range ,
-        #fields={"include": ["properties"]},
+        fields={"include": ["properties"]},
     )
     results = list(search_iterator)
-    print(results)
+    # Sacamos metadatos
+    metadata = extract_metadata(results)
+    print(metadata)
     unique_results = {}
     # A partir del id guardamos las fechas
     for item in results:
@@ -113,7 +138,7 @@ def download_image_copernicus(access_token, time_interval, image_type, aoi, eval
         }
 
 
-        json={
+        json_payload={
             "input": {
                 "bounds": {
                     "bbox": aoi
@@ -148,20 +173,35 @@ def download_image_copernicus(access_token, time_interval, image_type, aoi, eval
             "save_data" : True
         }
 
-        response = requests.post(url, headers=headers, json=json)
+        response = requests.post(url, headers=headers, json=json_payload)
 
         if response.status_code == 200:
             print(f"Request completed for date {date_string} in interval {time_interval}")
             
-            if save_path:
-                file_name = f"{date_string}.tiff"
-                file_path = os.path.join(save_path, file_name)
+        if save_path:
+            # Nombre de archivo a partir de la fecha
+            full_id = metadata[0]["id"]
+            short_id = "_".join(full_id.split("_")[:-2])
 
-                with MemoryFile(response.content) as memfile:
-                    with memfile.open() as dataset:
-                        with rasterio.open(file_path, 'w', **dataset.profile) as dst:
-                            dst.write(dataset.read())
-                print(f"Saved TIFF file to {file_path}")
+            tiff_file = os.path.join(save_path, f"{short_id}.tif")
+            json_file = os.path.join(save_path, f"{short_id}.json")
+
+            # full_date = metadata[0]["datetime"] if metadata else None
+            # print(f"--------{full_date}")
+
+            # Guardar metadatos en JSON
+            with open(json_file, "w") as f:
+                json.dump(metadata, f, indent=4)
+            print(f"Saved JSON metadata to {json_file}")
+
+            # Guardar imagen georreferenciada
+            with MemoryFile(response.content) as memfile:
+                with memfile.open() as dataset:
+                    profile = dataset.profile
+                    profile.update(driver="GTiff")
+                    with rasterio.open(tiff_file, 'w', **profile) as dst:
+                        dst.write(dataset.read())
+            print(f"Saved TIFF file to {tiff_file}")
             
             return response, date_string
         else:
