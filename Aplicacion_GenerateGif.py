@@ -7,6 +7,15 @@ import rasterio
 import os
 from matplotlib.colorbar import ColorbarBase
 
+# === Archivos tif a animar ===
+date = "2016-09-08"
+tif_paths = [
+    f'saved_files/application/{date}_chl_map_0_1.tif',
+    f'saved_files/application/{date}_chl_map_1_2.tif',
+    f'saved_files/application/{date}_chl_map_2_3.tif',
+    f'saved_files/application/{date}_chl_map_3_4.tif'
+]
+
 # === Función para leer .tif como array ===
 def read_tif_as_array(path):
     with rasterio.open(path) as src:
@@ -26,7 +35,7 @@ def load_qgis_colormap(colormap_path):
                 continue
             value = float(parts[0])
             r, g, b, a = [int(p) for p in parts[1:5]]
-            label = parts[5].strip()
+            #label = parts[5].strip()
             boundaries.append(value)
             colors.append((r / 255, g / 255, b / 255, a / 255))
 
@@ -34,28 +43,22 @@ def load_qgis_colormap(colormap_path):
     norm = BoundaryNorm(boundaries, ncolors=len(colors))
     return cmap, norm, boundaries
 
-# === Archivos tif a animar ===
-tif_paths = [
-    'saved_files/application/chl_pred_0_1.tif',
-    'saved_files/application/chl_pred_1_2.tif',
-    'saved_files/application/chl_pred_2_3.tif'
-]
 
 # === Cargar datos ===
 data_list = [read_tif_as_array(p) for p in tif_paths]
 
 # === Cargar colormap personalizado ===
-cmap, norm, boundaries = load_qgis_colormap("saved_files/application/colormap_custom.txt")
+cmap, norm, boundaries = load_qgis_colormap("saved_files/application/colormap_custom_2.txt")
 
 
 # Ticks y etiquetas
 tick_locs = [(boundaries[i] + boundaries[i+1]) / 2 for i in range(len(boundaries)-1)]
-labels = ["0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0", "1.2", "1.4", "1.6", "1.8", "2.0", "2.4", "2.8", "3.2", "3.6", "4.0", "4.5", "5.0", "6.0", "8.0", "10.0", "12.0", ">12.0"]
+labels = ["0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0", "1.2", "1.4", "1.6", "1.8", "2.0", "2.4", "2.8", "3.2", "3.6", "4.0", "4.5", "5.0", "6.0", "8.0", "10.0", "12.0", "15.0", "18.0", "24.0", "30.0"]
 tick_labels = labels[:-1]
 
 frames = []
 for path, data in zip(tif_paths, data_list):
-    depth_str = path.replace("saved_files/application/chl_pred_", "").replace(".tif", "").replace("_", "-")
+    depth_str = path.replace(f"saved_files/application/{date}_chl_map_", "").replace(".tif", "").replace("_", "-")
 
     fig, ax = plt.subplots(figsize=(8, 6))  # más ancho para que quepa la leyenda
     im = ax.imshow(data, cmap=cmap, norm=norm)
@@ -86,7 +89,7 @@ for path, data in zip(tif_paths, data_list):
 
 # Guardar el gif
 frames[0].save(
-    'saved_files/application/chl_pred_loop_with_legend.gif',
+    f'saved_files/application/{date}_chl_pred_loop.gif',
     save_all=True,
     append_images=frames[1:],
     duration=1000,
