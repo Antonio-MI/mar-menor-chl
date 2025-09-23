@@ -19,7 +19,7 @@ s3 = session.resource(
 bucket = s3.Bucket("eodata")
 
 fechas_str = [
-    '2025-08-12'
+    '2025-07-28'
 ]
 
 fechas = [datetime.datetime.strptime(f, "%Y-%m-%d").date() for f in fechas_str]
