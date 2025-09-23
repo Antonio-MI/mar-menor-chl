@@ -4,8 +4,8 @@ import os
 import csv
 
 # Credenciales y configuración de sesión
-ACCESS_KEY = 'R502RC3I5CM1WYTESZ61'
-SECRET_KEY = 'fPkfpmxGtO9NH3DijrC0xnEzngbExPP4II2i79KY'
+ACCESS_KEY = 'WE9L7X4K1NR0KPTUB28X'
+SECRET_KEY = 'hEVos6faoDpcBJEZX6ufxvQth9TXhPdws9VyHVKK'
 
 session = boto3.session.Session()
 s3 = session.resource(
@@ -18,13 +18,9 @@ s3 = session.resource(
 
 bucket = s3.Bucket("eodata")
 
-
-
 fechas_str = [
-    '2021-09-12'
+    '2025-08-12'
 ]
-
-
 
 fechas = [datetime.datetime.strptime(f, "%Y-%m-%d").date() for f in fechas_str]
 
@@ -32,7 +28,8 @@ fechas = [datetime.datetime.strptime(f, "%Y-%m-%d").date() for f in fechas_str]
 tile_id = "30SXG"
 
 # Prefijos base de búsqueda: L1C_N0500 o L1C
-prefixes = [f"Sentinel-2/MSI/L1C_N0500/{fecha.year}/{fecha.month:02d}/{fecha.day:02d}/" for fecha in fechas]
+#prefixes = [f"Sentinel-2/MSI/L1C_N0500/{fecha.year}/{fecha.month:02d}/{fecha.day:02d}/" for fecha in fechas]
+prefixes = [f"Sentinel-2/MSI/L1C/{fecha.year}/{fecha.month:02d}/{fecha.day:02d}/" for fecha in fechas]
 
 # Carpeta local destino
 output_dir = "SAFE_downloads"

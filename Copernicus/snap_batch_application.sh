@@ -10,7 +10,7 @@ OUTPUT_FORMAT="tif"
 # Para filtrar por fechas
 
 FILTER_DATES=(
-    20160908 20220714 20230420
+    20250812
 )
 
 
