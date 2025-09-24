@@ -8,7 +8,7 @@ import os
 from matplotlib.colorbar import ColorbarBase
 
 # === Archivos tif a animar ===
-date = "2025-07-28"
+date = "2016-04-01"
 tif_paths = [
     f'saved_files/application/{date}_chl_map_0_1.tif',
     f'saved_files/application/{date}_chl_map_1_2.tif',

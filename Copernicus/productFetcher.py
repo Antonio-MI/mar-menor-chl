@@ -19,7 +19,7 @@ s3 = session.resource(
 bucket = s3.Bucket("eodata")
 
 fechas_str = [
-    '2025-07-28'
+    '2016-04-01'
 ]
 
 fechas = [datetime.datetime.strptime(f, "%Y-%m-%d").date() for f in fechas_str]
@@ -28,8 +28,8 @@ fechas = [datetime.datetime.strptime(f, "%Y-%m-%d").date() for f in fechas_str]
 tile_id = "30SXG"
 
 # Prefijos base de búsqueda: L1C_N0500 o L1C
-#prefixes = [f"Sentinel-2/MSI/L1C_N0500/{fecha.year}/{fecha.month:02d}/{fecha.day:02d}/" for fecha in fechas]
-prefixes = [f"Sentinel-2/MSI/L1C/{fecha.year}/{fecha.month:02d}/{fecha.day:02d}/" for fecha in fechas]
+prefixes = [f"Sentinel-2/MSI/L1C_N0500/{fecha.year}/{fecha.month:02d}/{fecha.day:02d}/" for fecha in fechas]
+#prefixes = [f"Sentinel-2/MSI/L1C/{fecha.year}/{fecha.month:02d}/{fecha.day:02d}/" for fecha in fechas]
 
 # Carpeta local destino
 output_dir = "SAFE_downloads"

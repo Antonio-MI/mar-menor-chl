@@ -5,7 +5,7 @@ from rasterio.transform import from_origin
 import os
 
 path = "saved_files/application/preds/"
-filename = "2025-07-28_pred.csv"
+filename = "2016-04-01_pred.csv"
 date = filename[:10]
 df = pd.read_csv(os.path.join(path, filename))
 
