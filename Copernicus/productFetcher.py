@@ -4,8 +4,9 @@ import os
 import csv
 
 # Credenciales y configuración de sesión
-ACCESS_KEY = 'WE9L7X4K1NR0KPTUB28X'
-SECRET_KEY = 'hEVos6faoDpcBJEZX6ufxvQth9TXhPdws9VyHVKK'
+#S3 Credential Dataspace Copernicus https://eodata-s3keysmanager.dataspace.copernicus.eu/
+ACCESS_KEY = 'key'
+SECRET_KEY = 'secret'
 
 session = boto3.session.Session()
 s3 = session.resource(

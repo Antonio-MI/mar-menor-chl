@@ -2,9 +2,9 @@
 
 GRAPH_XML="snap_graph.xml"
 TEMPLATE_PARAMS="snap_graph.properties"
-INPUT_DIR="/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads"
-OUTPUT_DIR="/home/antonio/Documentos/CienciasMarinas/Nitrates/Code/Copernicus/SAFE_downloads/test"
-GPT="/home/antonio/esa-snap/bin/gpt"
+INPUT_DIR="/path/to/SAFEfileslocation"
+OUTPUT_DIR="/path/to/outputfolder"
+GPT="/path/to/esa-snap/bin/gpt"
 OUTPUT_FORMAT="tif"
 
 # Para filtrar por fechas
