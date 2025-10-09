@@ -24,33 +24,33 @@ Whiting event, when a white spot appeared on the western side of the lagoo. Such
 
 Recent monitoring reports indicated a potential eutrophication episode triggered by increasing Chl-a levels in the lagoon. Consequently, the output for this date should show higher Chl-a concentrations than in July 2022, when average values were relatively low. Additionally, a general pattern observed is that Chl-a concentration tends to increase with depth.
 
-| ![img1](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2025-07-28_chl_map_0_1.png) | ![img2](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2025-07-28_chl_map_1_2.png) | ![img3](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2025-07-28_chl_map_2_3.png) | ![img4](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2025-07-28_chl_map_3_4.png) |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|                           0 - 1 m                            |                           1 - 2 m                            |                           2 - 3 m                            |                           3 - 4 m                            |
+| ![img1](saved_files/application/2025-07-28_chl_map_0_1.png) | ![img2](saved_files/application/2025-07-28_chl_map_1_2.png) | ![img3](saved_files/application/2025-07-28_chl_map_2_3.png) | ![img4](saved_files/application/2025-07-28_chl_map_3_4.png) |
+| :---------------------------------------------------------: | :---------------------------------------------------------: | :---------------------------------------------------------: | :---------------------------------------------------------: |
+|                           0 - 1 m                           |                           1 - 2 m                           |                           2 - 3 m                           |                           3 - 4 m                           |
 
 **2021-08-13**
 
 The maps for August 13, 2021, correspond to a short period in which chlorophyll-a concentrations peaked, with values close to those reached during the 2016 eutrophication crisis.
 
-| ![img1](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2021-08-13_chl_map_0_1.png) | ![img2](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2021-08-13_chl_map_1_2.png) | ![img3](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2021-08-13_chl_map_2_3.png) | ![img4](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2021-08-13_chl_map_3_4.png) |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|                           0 - 1 m                            |                           1 - 2 m                            |                           2 - 3 m                            |                           3 - 4 m                            |
+| ![img1](saved_files/application/2021-08-13_chl_map_0_1.png) | ![img2](saved_files/application/2021-08-13_chl_map_1_2.png) | ![img3](saved_files/application/2021-08-13_chl_map_2_3.png) | ![img4](saved_files/application/2021-08-13_chl_map_3_4.png) |
+| :---------------------------------------------------------: | :---------------------------------------------------------: | :---------------------------------------------------------: | :---------------------------------------------------------: |
+|                           0 - 1 m                           |                           1 - 2 m                           |                           2 - 3 m                           |                           3 - 4 m                           |
 
 **2024-02-04**
 
 Chl-a concentrations for February 4, 2024. Represented to visualize normal behavior: low Chl-a values at surface which increase slightly with depth.
 
-| ![img1](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2024-02-04_chl_map_0_1.png) | ![img2](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2024-02-04_chl_map_1_2.png) | ![img3](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2024-02-04_chl_map_2_3.png) | ![img4](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2024-02-04_chl_map_3_4.png) |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|                           0 - 1 m                            |                           1 - 2 m                            |                           2 - 3 m                            |                           3 - 4 m                            |
+| ![img1](saved_files/application/2024-02-04_chl_map_0_1.png) | ![img2](saved_files/application/2024-02-04_chl_map_1_2.png) | ![img3](saved_files/application/2024-02-04_chl_map_2_3.png) | ![img4](saved_files/application/2024-02-04_chl_map_3_4.png) |
+| :---------------------------------------------------------: | :---------------------------------------------------------: | :---------------------------------------------------------: | :---------------------------------------------------------: |
+|                           0 - 1 m                           |                           1 - 2 m                           |                           2 - 3 m                           |                           3 - 4 m                           |
 
 **2016-09-08**
 
 September 8, 2016, during the eutrophication crisis. The maps show Chl-a concentrations peaking and in some depths, they have even saturated the color scale. 
 
-| ![img1](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2016-09-08_chl_map_0_1.png) | ![img2](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2016-09-08_chl_map_1_2.png) | ![img3](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2016-09-08_chl_map_2_3.png) | ![img4](file:///home/antonio/Documentos/CienciasMarinas/Chl/mar-menor-chl/saved_files/application/2016-09-08_chl_map_3_4.png) |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|                           0 - 1 m                            |                           1 - 2 m                            |                           2 - 3 m                            |                           3 - 4 m                            |
+| ![img1](saved_files/application/2016-09-08_chl_map_0_1.png) | ![img2](saved_files/application/2016-09-08_chl_map_1_2.png) | ![img3](saved_files/application/2016-09-08_chl_map_2_3.png) | ![img4](saved_files/application/2016-09-08_chl_map_3_4.png) |
+| :---------------------------------------------------------: | :---------------------------------------------------------: | :---------------------------------------------------------: | :---------------------------------------------------------: |
+|                           0 - 1 m                           |                           1 - 2 m                           |                           2 - 3 m                           |                           3 - 4 m                           |
 
 # Code description
 
