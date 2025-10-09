@@ -7,7 +7,7 @@ from matplotlib.colors import ListedColormap, BoundaryNorm
 date = "2016-09-08"
 
 # Leer y parsear el archivo del colormap
-colormap_path = "saved_files/application/colormap_custom_2.txt"
+colormap_path = "saved_files/application/colormap_custom.txt"
 
 depths = ["0_1", "1_2", "2_3", "3_4"]
 for depth in depths:
