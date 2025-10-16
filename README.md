@@ -66,6 +66,8 @@ The flux needed to process a new image and create a map is:
 - `Aplicacion_TIFFfromCSV.py` to load Chl-a prediction csvs and generate a tiff file for each depth.
 - `Aplicacion_PlotTIFF.py` to create individual plots or `Aplicacion_GenerateGif.py` to create a gif with all depths.
 
+Update: an automated flux has been added to the repo (16/10/2025) with Docker. It can be found in `\Docker`.
+
 The code is structured as follows:
 
 ```
@@ -85,6 +87,7 @@ The code is structured as follows:
 │       └── locBoyasUPCT_reproyectado.csv # With another coordinate system
 ├── Copernicus # Contains scripts and notebooks related to Sentinel 2 imagery
 │   ├── access_token_credentials.py # function to get access token
+│   ├── check_dates.py # script to check cloud coverage in the AOI
 │   ├── config.ini # passwords for the previous script
 │   ├── download_tiff.ipynb # Example to download L2A images for a specific AoI
 │   ├── Fechas_CloudCover.ipynb # Measurement of cloud cover for a predefined AoI and dates
@@ -138,6 +141,14 @@ The code is structured as follows:
 └── utils.py
 
 ```
+
+
+
+# Usage
+
+To simplify map generation, a Docker folder has been added to the repository, which allows for a much easier process, detailed in another `README.md` inside that folder.
+
+
 
 # Cite
 
