@@ -141,7 +141,15 @@ The code is structured as follows:
 
 # Cite
 
-## 
+Style IEEE
+
+[1]A. Martínez Ibarra, A. González-Vidal, A. Cánovas Rodríguezy A. Skarmeta Gómez, «Chlorophyll-a Mapping and Prediction in the Mar Menor Lagoon Using C2RCC-Processed Sentinel 2 Imagery». Zenodo, oct. 10, 2025. doi: 10.48550/arXiv.2510.09736.
+
+Style APA
+
+Martínez Ibarra, A., González-Vidal, A., Cánovas Rodríguez, A., & Skarmeta Gómez, A. (2025). Chlorophyll-a Mapping and Prediction in the Mar Menor Lagoon Using C2RCC-Processed Sentinel 2 Imagery. Zenodo. https://doi.org/10.48550/arXiv.2510.09736
+
+Preprint available at https://doi.org/10.48550/arXiv.2510.09736 (arXiv), and https://zenodo.org/records/17357219 (Zenodo)
 
 ## Contact
 
