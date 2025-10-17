@@ -1,8 +1,8 @@
-This repository contains the code and outputs relative to the article **"Chlorophyll-a Mapping and Prediction in the Mar Menor Lagoon Using C2RCC-Processed Sentinel 2 Imagery"** by Antonio Martínez Ibarra, Aurora González Vidal, Adrián Cánovas Rodríguez, and Antonio F. Skarmeta from the University of Murcia, submitted to IEEE Transactions on Geoscience and Remote Sensing for publication.
+This repository contains the code and outputs relative to the article **"Chlorophyll-a Mapping and Prediction in the Mar Menor Lagoon Using C2RCC-Processed Sentinel 2 Imagery"** by Antonio Martínez Ibarra, Aurora González Vidal, Adrián Cánovas Rodríguez, and Antonio F. Skarmeta from the University of Murcia, submitted to IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing for publication.
 
 ![Output demo: Chl-a for 2022-07-14](saved_files/application/2022-07-14_chl_pred_loop.gif)
 
-# Paper Abstract
+# Abstract
 
 The Mar Menor, Europe’s largest hypersaline coastal lagoon, located in southeastern Spain, has undergone severe eutrophication crises, with devastating impacts on biodiversity and water quality. Monitoring chlorophyll-a (Chl-a), a proxy for phytoplankton biomass, is essential to anticipate harmful algal blooms and guide mitigation. Traditional *in situ* measurements, while precise, are spatially and temporally limited. Satellite-based approaches provide a more comprehensive view, enabling scalable, long-term, and transferable monitoring.
 This study aims to overcome limitations of chlorophyll monitoring, often restricted to surface estimates or limited temporal coverage, by developing a reliable methodology to predict and map Chl-a concentrations across the entire water column of the Mar Menor. Specifically, the work integrates Sentinel 2 imagery with buoy-based ground truth to create models capable of high-resolution, depth-specific monitoring, enhancing early-warning capabilities for eutrophication.
