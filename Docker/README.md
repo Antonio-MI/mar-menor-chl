@@ -1,6 +1,6 @@
 # Docker for automatic map generation
 
-A Docker container has been created to automate the entire map generation process, requiring only a date as a parameter.
+A Docker container has been created to automate the entire map generation process, requiring only a date as a parameter. The image was generated for Linux
 
 ## User Guide
 
