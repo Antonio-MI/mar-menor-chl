@@ -24,10 +24,16 @@ RUN wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tgz && \
     cd .. && rm -rf Python-3.8.5*
 
 # === Instalar SNAP 11.0.0 ===
-RUN wget -O /tmp/snap_installer_11.sh "https://download.esa.int/step/snap/11.0/installers/esa-snap_sentinel_linux-11.0.0.sh" && \
-    chmod +x /tmp/snap_installer_11.sh && \
-    /tmp/snap_installer_11.sh -q -dir /opt/snap && \
-    rm /tmp/snap_installer_11.sh
+# RUN wget -O /tmp/snap_installer_11.sh "https://download.esa.int/step/snap/11.0/installers/esa-snap_sentinel_linux-11.0.0.sh" && \
+#     chmod +x /tmp/snap_installer_11.sh && \
+#     /tmp/snap_installer_11.sh -q -dir /opt/snap && \
+#     rm /tmp/snap_installer_11.sh
+
+# === Instalar SNAP 12.0.0 ===
+RUN wget -O /tmp/snap_installer_12.sh "https://download.esa.int/step/snap/12.0/installers/esa-snap_all_linux-12.0.0.sh" && \
+    chmod +x /tmp/snap_installer_12.sh && \
+    /tmp/snap_installer_12.sh -q -dir /opt/snap && \
+    rm /tmp/snap_installer_12.sh
 
 # === Crear estructura del proyecto ===
 WORKDIR /app
