@@ -1,4 +1,4 @@
-This repository contains the code and outputs relative to the article **"Chlorophyll-a Mapping and Prediction in the Mar Menor Lagoon Using C2RCC-Processed Sentinel 2 Imagery"** by Antonio Martínez Ibarra, Aurora González Vidal, Adrián Cánovas Rodríguez, and Antonio F. Skarmeta from the University of Murcia, submitted to IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing for publication.
+This repository contains the code and outputs relative to the article **"Chlorophyll-a Mapping and Prediction in the Mar Menor Lagoon Using C2RCC-Processed Sentinel 2 Imagery"** by Antonio Martínez Ibarra, Aurora González Vidal, Adrián Cánovas Rodríguez, and Antonio F. Skarmeta from the University of Murcia.
 
 ![Output demo: Chl-a for 2022-07-14](saved_files/application/2022-07-14_chl_pred_loop.gif)
 

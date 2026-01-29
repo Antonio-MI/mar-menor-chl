@@ -4,14 +4,22 @@ import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe 
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import geopandas as gpd  # <-- añadido
+import fiona
 
 date = "2016-09-08"
 
 # Ruta al KML de batimetría
 bathymetry_kml_path = "files/MarMenorBathymetry.kml"
 
+# Para Python 3.11
+# bathymetry_gdf = gpd.read_file(bathymetry_kml_path, driver="KML")
+# bathymetry_gdf = bathymetry_gdf.set_crs("EPSG:4326", allow_override=True)
+# Para Python 3.8.5
 # Leer KML una vez (asumimos EPSG:4326)
-bathymetry_gdf = gpd.read_file(bathymetry_kml_path, driver="KML")
+# Workaround para Python 3.8.5 con versiones antiguas de fiona
+fiona.drvsupport.supported_drivers['KML'] = 'r'
+with fiona.open(bathymetry_kml_path, 'r') as src:
+    bathymetry_gdf = gpd.GeoDataFrame.from_features(src, crs=src.crs)
 bathymetry_gdf = bathymetry_gdf.set_crs("EPSG:4326", allow_override=True)
 
 # Leer y parsear el archivo del colormap

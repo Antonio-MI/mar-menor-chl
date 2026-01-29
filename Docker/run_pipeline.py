@@ -20,6 +20,7 @@ pred_dir = cfg.get("pred_dir")
 map_dir = cfg.get("map_dir")
 geojson_file = cfg.get("geojson_file")
 colormap_file = cfg.get("colormap_file")
+bathymetry_map = cfg.get("bathymetry_map")
 
 # === [0] Inicio del pipeline ===
 t_start = time.time()
@@ -56,7 +57,7 @@ print(f"Tiempo transcurrido [4]: {t8 - t7:.2f} s")
 if cfg.get("plot_individuales", False):
     print(f"\n=== [5] Generando plots individuales ===")
     t9 = time.time()
-    subprocess.run(["python3", "models/Aplicacion_PlotTIFF.py", "--date", fecha, "--input", map_dir, "--output", map_dir, "--colormap", colormap_file], check=True)
+    subprocess.run(["python3", "models/Aplicacion_PlotTIFF.py", "--date", fecha, "--input", map_dir, "--output", map_dir, "--colormap", colormap_file, "--bathymetry", bathymetry_map], check=True)
     t10 = time.time()
     print(f"Tiempo transcurrido [5]: {t10 - t9:.2f} s")
 
