@@ -14,7 +14,7 @@ The study delivers an end-to-end, validated methodology for depth-specific chlor
 
 **2022-07-14**
 
-Whiting event, when a white spot appeared on the western side of the lagoo. Such phenomena are usually linked to phytoplankton blooms or riverine sediments, although in this case the cause was uncertain. Previous reports noted consistently higher Chl-a concentrations within the white spot compared to surrounding areas. Accordingly, the predicted map for this date highlights the white spot with higher Chl-a values than its vicinity.
+Whiting event, when a white spot appeared on the western side of the lagoon. Such phenomena are usually linked to phytoplankton blooms or riverine sediments, although in this case the cause was uncertain. Previous reports noted consistently higher Chl-a concentrations within the white spot compared to surrounding areas. Accordingly, the predicted map for this date highlights the white spot with higher Chl-a values than its vicinity.
 
 | ![img1](saved_files/application/2022-07-14_chl_map_0_1.png) | ![img2](saved_files/application/2022-07-14_chl_map_1_2.png) | ![img3](saved_files/application/2022-07-14_chl_map_2_3.png) | ![img4](saved_files/application/2022-07-14_chl_map_3_4.png) |
 | :---------------------------------------------------------: | :---------------------------------------------------------: | :---------------------------------------------------------: | :---------------------------------------------------------: |
@@ -111,6 +111,7 @@ The code is structured as follows:
 │   ├── Replicar_Related_Extended.ipynb # Notebooks to replicate other articles
 │   ├── Replicar_Related.ipynb
 │   └── Replicar_Related_merged_dataset.ipynb
+│   └── Significancia_Resultados.ipynb # Wilcoxon signed-rank test for statistical significance
 ├── files # files used in the article and Mar Menor geojson
 ├── Preparacion_Datasets.ipynb # Notebook to unify buoy data, load reflectances from processed images (with SNAP) and make window aggregations. Intermediate outputs saved into saved_files. Merge of bouy and satellite data and band combinations addition. csv outputs save into saved_files/dataset. Those are used in Seleccion_Parametros.ipynb
 ├── README.md
