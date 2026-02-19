@@ -1,0 +1,28 @@
+{
+  "dataset": "TOA_15x15_depth_in_3_4",
+  "model_name": "CAT",
+  "best_params": {
+    "loss_function": "RMSE",
+    "eval_metric": "RMSE",
+    "early_stopping_rounds": 50,
+    "verbose": false,
+    "thread_count": 12,
+    "iterations": 1000,
+    "learning_rate": 0.05,
+    "depth": 8,
+    "l2_leaf_reg": 1.469668687724057
+  },
+  "cv_rmsle": 0.3786,
+  "cv_r2": 0.6192,
+  "n_trials": 100,
+  "n_folds": 5,
+  "n_samples": 460,
+  "n_features": 61,
+  "python": "3.12.3",
+  "libs": {
+    "catboost": "1.2.8",
+    "sklearn": "1.8.0",
+    "numpy": "2.4.2",
+    "pandas": "3.0.0"
+  }
+}

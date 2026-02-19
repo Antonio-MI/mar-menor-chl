@@ -50,7 +50,7 @@ to check cloud coverage in a date interval. This consults the data catalog, but 
 ## Description
 
 **`Dockerfile`**
- The base image is Ubuntu 22.04. On top of it, several libraries are installed, along with Python 3.8.5 (used for all developments) and SNAP 12.0.0 (Updated from 11.0.0 on 22/10/2025 to support S2C). Then, the requirements are installed, and all scripts, configuration files, and trained models are copied into the image.
+ The base image is Ubuntu 22.04. On top of it, several libraries are installed, along with Python 3.11.0 (used for all developments) and SNAP 12.0.0 (Updated from 11.0.0 on 22/10/2025 to support S2C). Then, the requirements are installed, and all scripts, configuration files, and trained models are copied into the image.
 
 **`config.yaml`**
  Configuration file that contains the input/output paths for each script and the location of auxiliary files.

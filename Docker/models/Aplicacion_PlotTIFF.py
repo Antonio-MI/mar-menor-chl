@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import argparse
-import geopandas as gpd 
+import geopandas as gpd
 import fiona
 
 parser = argparse.ArgumentParser()
@@ -19,15 +19,9 @@ date = args.date
 # Ruta al KML de batimetría
 bathymetry_kml_path = args.bathymetry
 
-# Para Python 3.11
-# bathymetry_gdf = gpd.read_file(bathymetry_kml_path, driver="KML")
-# bathymetry_gdf = bathymetry_gdf.set_crs("EPSG:4326", allow_override=True)
-# Para Python 3.8.5
-# Leer KML una vez (asumimos EPSG:4326)
-# Workaround para Python 3.8.5 con versiones antiguas de fiona
+# Para Python 3.11: habilitar driver KML explícitamente y leer con geopandas
 fiona.drvsupport.supported_drivers['KML'] = 'r'
-with fiona.open(bathymetry_kml_path, 'r') as src:
-    bathymetry_gdf = gpd.GeoDataFrame.from_features(src, crs=src.crs)
+bathymetry_gdf = gpd.read_file(bathymetry_kml_path, driver="KML")
 bathymetry_gdf = bathymetry_gdf.set_crs("EPSG:4326", allow_override=True)
 
 # Leer y parsear el archivo del colormap

@@ -64,7 +64,7 @@ if cfg.get("plot_individuales", False):
 if cfg.get("generate_gif", False):
     print(f"\n=== [6] Generando GIF ===")
     t11 = time.time()
-    subprocess.run(["python3", "models/Aplicacion_GenerateGif.py", "--date", fecha, "--input", map_dir, "--output", map_dir, "--colormap", colormap_file], check=True)
+    subprocess.run(["python3", "models/Aplicacion_GenerateGif.py", "--date", fecha, "--input", map_dir, "--output", map_dir, "--colormap", colormap_file, "--bathymetry", bathymetry_map], check=True)
     t12 = time.time()
     print(f"Tiempo transcurrido [6]: {t12 - t11:.2f} s")
 

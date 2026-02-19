@@ -13,10 +13,8 @@ date = "2016-09-08"
 bathymetry_kml_path = os.path.join(os.path.dirname(__file__), "saved_files/MarMenorBathymetry.kml")
 
 # Leer KML una vez (asumimos EPSG:4326)
-# Workaround para Python 3.8.5 con versiones antiguas de fiona
 fiona.drvsupport.supported_drivers['KML'] = 'r'
-with fiona.open(bathymetry_kml_path, 'r') as src:
-    bathymetry_gdf = gpd.GeoDataFrame.from_features(src, crs=src.crs)
+bathymetry_gdf = gpd.read_file(bathymetry_kml_path, driver="KML")
 bathymetry_gdf = bathymetry_gdf.set_crs("EPSG:4326", allow_override=True)
 
 # Leer y parsear el archivo del colormap

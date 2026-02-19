@@ -13,15 +13,15 @@ RUN apt-get update && apt-get install -y \
     openjdk-11-jdk gdal-bin tk-dev liblzma-dev \
     && apt-get clean
 
-# === Instalar Python 3.8.5 desde fuente ===
+# === Instalar Python 3.11.0 desde fuente ===
 WORKDIR /tmp
-RUN wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tgz && \
-    tar -xf Python-3.8.5.tgz && cd Python-3.8.5 && \
+RUN wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.tgz && \
+    tar -xf Python-3.11.0.tgz && cd Python-3.11.0 && \
     ./configure --enable-optimizations && \
     make -j"$(nproc)" && make altinstall && \
-    ln -sf /usr/local/bin/python3.8 /usr/bin/python3 && \
-    ln -sf /usr/local/bin/pip3.8 /usr/bin/pip3 && \
-    cd .. && rm -rf Python-3.8.5*
+    ln -sf /usr/local/bin/python3.11 /usr/bin/python3 && \
+    ln -sf /usr/local/bin/pip3.11 /usr/bin/pip3 && \
+    cd .. && rm -rf Python-3.11.0*
 
 # === Instalar SNAP 11.0.0 ===
 # RUN wget -O /tmp/snap_installer_11.sh "https://download.esa.int/step/snap/11.0/installers/esa-snap_sentinel_linux-11.0.0.sh" && \

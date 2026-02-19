@@ -1,0 +1,28 @@
+{
+  "dataset": "C2X-Complex_rhow_15x15_depth_in_1_2",
+  "model_name": "CAT",
+  "best_params": {
+    "loss_function": "RMSE",
+    "eval_metric": "RMSE",
+    "early_stopping_rounds": 50,
+    "verbose": false,
+    "thread_count": 16,
+    "iterations": 500,
+    "learning_rate": 0.05,
+    "depth": 7,
+    "l2_leaf_reg": 1.1064493925754044
+  },
+  "cv_rmsle": 0.3561,
+  "cv_r2": 0.7949,
+  "n_trials": 100,
+  "n_folds": 5,
+  "n_samples": 475,
+  "n_features": 56,
+  "python": "3.11.0",
+  "libs": {
+    "catboost": "1.2.8",
+    "sklearn": "1.8.0",
+    "numpy": "2.4.2",
+    "pandas": "3.0.0"
+  }
+}

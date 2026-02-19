@@ -19,7 +19,7 @@ target_dates = [
     date_str
 ]
 
-groupings = ["5x5", "9x9"]
+groupings = ["15x15"]
 net_set = ["C2X-Complex"]
 
 for grouping in groupings:
@@ -60,31 +60,22 @@ print("Dataframes con combinaciones de bandas y procesados")
 carpeta_modelos = args.models
 
 selection = {
-    'C2X-Complex_rhow_9x9_depth_in_0_1': 'XGB',
-    'C2X-Complex_rhow_9x9_depth_in_1_2': 'CAT',
-    #'TOA_9x9_depth_in_2_3': 'KNN',
-    'C2X-Complex_rhow_5x5_depth_in_2_3': 'CAT',
-    'C2X-Complex_rhow_5x5_depth_in_3_4': 'RF',
+    'C2X-Complex_rhow_15x15_depth_in_0_1': 'CAT',
+    'C2X-Complex_rhow_15x15_depth_in_1_2': 'CAT',
+    'TOA_15x15_depth_in_2_3': 'CAT',
+    'TOA_15x15_depth_in_3_4': 'CAT',
 }
 
 
-df_out = pd.DataFrame(dfs["df_tifs_C2X-Complex_rhow_9x9"].loc[:, ["Date", "Latitude", "Longitude"]])
+df_out = pd.DataFrame(dfs["df_tifs_C2X-Complex_rhow_15x15"].loc[:, ["Date", "Latitude", "Longitude"]])
 
 for dataset, model_name in selection.items():
-    if model_name == "XGB":
-        df_in = dfs["df_tifs_C2X-Complex_rhow_9x9"]
-    
-    elif model_name == "CAT" and dataset == "C2X-Complex_rhow_5x5_depth_in_2_3":
-        df_in = dfs["df_tifs_C2X-Complex_rhow_5x5"]
-
-    elif model_name == "CAT" and dataset == "C2X-Complex_rhow_9x9_depth_in_1_2":
-        df_in = dfs["df_tifs_C2X-Complex_rhow_9x9"]
-
-    elif model_name == "KNN":
-        df_in = dfs["df_tifs_TOA_9x9"]
-
-    elif model_name == "RF":
-        df_in = dfs["df_tifs_C2X-Complex_rhow_5x5"]
+    if "C2X-Complex_rhow" in dataset:
+        ventana = dataset.split("_")[2]  # e.g. "15x15"
+        df_in = dfs[f"df_tifs_C2X-Complex_rhow_{ventana}"]
+    elif "TOA" in dataset:
+        ventana = dataset.split("_")[1]  # e.g. "15x15"
+        df_in = dfs[f"df_tifs_TOA_{ventana}"]
 
     print(dataset, model_name)
     depth = dataset[-3:]
