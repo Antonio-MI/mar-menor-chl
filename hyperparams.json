@@ -1,0 +1,339 @@
+{
+    "XGB": {
+        "scale_values": false,
+        "params": {
+            "n_estimators": {
+                "type": "categorical",
+                "choices": [
+                    300,
+                    500,
+                    750
+                ]
+            },
+            "learning_rate": {
+                "type": "categorical",
+                "choices": [
+                    0.01,
+                    0.02,
+                    0.03
+                ]
+            },
+            "max_depth": {
+                "type": "int",
+                "low": 5,
+                "high": 8
+            },
+            "min_child_weight": {
+                "type": "int",
+                "low": 2,
+                "high": 4
+            },
+            "subsample": {
+                "type": "float",
+                "low": 0.6,
+                "high": 0.8
+            },
+            "colsample_bytree": {
+                "type": "float",
+                "low": 0.6,
+                "high": 0.8
+            },
+            "device": "cpu",
+            "objective": {
+                "type": "categorical",
+                "choices": [
+                    "reg:squarederror",
+                    "reg:squaredlogerror"
+                ]
+            },
+            "tree_method": "hist",
+            "enable_categorical": true,
+            "eval_metric": "rmse",
+            "n_jobs": 12
+        }
+    },
+    "LBM": {
+        "scale_values": false,
+        "params": {
+            "objective": "regression",
+            "metric": "rmse",
+            "boosting_type": "gbdt",
+            "device": "cpu",
+            "verbosity": -1,
+            "verbose": -1,
+            "learning_rate": {
+                "type": "categorical",
+                "choices": [
+                    0.02,
+                    0.03,
+                    0.04,
+                    0.05
+                ]
+            },
+            "num_leaves": {
+                "type": "categorical",
+                "choices": [
+                    10,
+                    20,
+                    30
+                ]
+            },
+            "max_depth": {
+                "type": "int",
+                "low": 5,
+                "high": 8
+            },
+            "min_child_samples": {
+                "type": "int",
+                "low": 4,
+                "high": 8
+            },
+            "subsample": {
+                "type": "float",
+                "low": 0.6,
+                "high": 0.8
+            },
+            "colsample_bytree": {
+                "type": "float",
+                "low": 0.6,
+                "high": 0.8
+            },
+            "n_estimators": {
+                "type": "categorical",
+                "choices": [
+                    300,
+                    500,
+                    750
+                ]
+            },
+            "min_split_gain": {
+                "type": "categorical",
+                "choices": [
+                    0.0,
+                    0.1,
+                    0.2,
+                    0.5,
+                    1.0
+                ]
+            },
+            "n_jobs": 12
+        }
+    },
+    "MLP": {
+        "scale_values": true,
+        "params": {
+            "hidden_layer_sizes": {
+                "type": "categorical",
+                "choices": [
+                    "32",
+                    "64",
+                    "32_16",
+                    "32_16_8"
+                ]
+            },
+            "activation": {
+                "type": "categorical",
+                "choices": [
+                    "relu",
+                    "tanh"
+                ]
+            },
+            "solver": {
+                "type": "categorical",
+                "choices": [
+                    "adam",
+                    "sgd"
+                ]
+            },
+            "alpha": {
+                "type": "float",
+                "low": 1e-5,
+                "high": 0.1,
+                "log": true
+            },
+            "learning_rate": {
+                "type": "categorical",
+                "choices": [
+                    "constant",
+                    "adaptive"
+                ]
+            },
+            "learning_rate_init": {
+                "type": "float",
+                "low": 1e-4,
+                "high": 1e-2,
+                "log": true
+            },
+            "max_iter": 400,
+            "n_iter_no_change": 25,
+            "early_stopping": true,
+            "validation_fraction": 0.2,
+            "random_state": 42,
+            "verbose": false
+        }
+    },
+    "SVR": {
+        "scale_values": true,
+        "params": {
+            "kernel": "rbf",
+            "C": {
+                "type": "float",
+                "low": 0.1,
+                "high": 10.0,
+                "log": true
+            },
+            "epsilon": {
+                "type": "float",
+                "low": 0.01,
+                "high": 0.2
+            },
+            "gamma": "scale",
+            "shrinking": true,
+            "tol": 1e-3,
+            "max_iter": -1,
+            "verbose": false
+        }
+    },
+    "KNN": {
+        "scale_values": true,
+        "params": {
+            "n_neighbors": {
+                "type": "int",
+                "low": 3,
+                "high": 12
+            },
+            "weights": "distance",
+            "algorithm": "auto",
+            "leaf_size": {
+                "type": "int",
+                "low": 10,
+                "high": 40
+            },
+            "p": 2,
+            "metric": "minkowski"
+        }
+    },
+    "LR": {
+        "scale_values": true,
+        "params": {
+            "fit_intercept": {
+                "type": "categorical",
+                "choices": [
+                    true,
+                    false
+                ]
+            },
+            "positive": {
+                "type": "categorical",
+                "choices": [
+                    true,
+                    false
+                ]
+            }
+        }
+    },
+    "RF": {
+        "scale_values": false,
+        "params": {
+            "n_estimators": {
+                "type": "categorical",
+                "choices": [
+                    100,
+                    200,
+                    400
+                ]
+            },
+            "max_features": {
+                "type": "categorical",
+                "choices": [
+                    "sqrt",
+                    "log2",
+                    0.5,
+                    0.7
+                ]
+            },
+            "max_depth": {
+                "type": "int",
+                "low": 5,
+                "high": 12
+            },
+            "min_samples_split": {
+                "type": "int",
+                "low": 2,
+                "high": 8
+            },
+            "min_samples_leaf": {
+                "type": "int",
+                "low": 2,
+                "high": 8
+            },
+            "bootstrap": {
+                "type": "categorical",
+                "choices": [
+                    true,
+                    false
+                ]
+            },
+            "random_state": 42,
+            "verbose": 0,
+            "n_jobs": 12
+        }
+    },
+    "CAT": {
+        "scale_values": false,
+        "params": {
+            "iterations": {
+                "type": "categorical",
+                "choices": [
+                    500,
+                    750,
+                    1000
+                ]
+            },
+            "learning_rate": {
+                "type": "categorical",
+                "choices": [
+                    0.02,
+                    0.03,
+                    0.04,
+                    0.05
+                ]
+            },
+            "depth": {
+                "type": "int",
+                "low": 4,
+                "high": 8
+            },
+            "l2_leaf_reg": {
+                "type": "float",
+                "low": 1.0,
+                "high": 5.0
+            },
+            "loss_function": "RMSE",
+            "eval_metric": "RMSE",
+            "early_stopping_rounds": 50,
+            "verbose": false,
+            "thread_count": 12
+        }
+    },
+    "ELN": {
+        "scale_values": true,
+        "params": {
+            "alpha": {
+                "type": "float",
+                "low": 1e-4,
+                "high": 1.0,
+                "log": true
+            },
+            "l1_ratio": {
+                "type": "float",
+                "low": 0.1,
+                "high": 0.9
+            },
+            "fit_intercept": true,
+            "max_iter": 1000,
+            "tol": 1e-4,
+            "selection": "cyclic"
+        }
+    }
+}

@@ -150,7 +150,7 @@ def create_processed_dfs(dfs_tifs):
         df = df.rename(columns=band_names)
 
         # Para coger de solamente de C2RCC las bandas TOA, puesto que son iguales en C2X y Complex
-        if "9x9" in nombre_df:
+        if "15x15" in nombre_df:
         #     #print(nombre_df)
             ventana = nombre_df.split("_")[3]
             dfs_tifs_all[f"df_tifs_TOA_{ventana}"] = df.iloc[:,np.r_[0:16]]
@@ -328,7 +328,7 @@ def add_season(dfs):
         dfs[nombre_df] = df
 
         # Para rellenar algunos nulos que aparecen y que todos los df tengan las mismas filas
-        dfs[nombre_df] = df.fillna(method="ffill") 
+        dfs[nombre_df] = df.ffill()
 
     return dfs
 

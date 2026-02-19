@@ -4,11 +4,8 @@ This repository contains the code and outputs relative to the article **"Chlorop
 
 # Abstract
 
-The Mar Menor, Europe’s largest hypersaline coastal lagoon, located in southeastern Spain, has undergone severe eutrophication crises, with devastating impacts on biodiversity and water quality. Monitoring chlorophyll-a (Chl-a), a proxy for phytoplankton biomass, is essential to anticipate harmful algal blooms and guide mitigation. Traditional *in situ* measurements, while precise, are spatially and temporally limited. Satellite-based approaches provide a more comprehensive view, enabling scalable, long-term, and transferable monitoring.
-This study aims to overcome limitations of chlorophyll monitoring, often restricted to surface estimates or limited temporal coverage, by developing a reliable methodology to predict and map Chl-a concentrations across the entire water column of the Mar Menor. Specifically, the work integrates Sentinel 2 imagery with buoy-based ground truth to create models capable of high-resolution, depth-specific monitoring, enhancing early-warning capabilities for eutrophication.
-Nearly a decade of Sentinel 2 images was atmospherically corrected using C2RCC processors. Buoy data were aggregated by depth (0–1 m, 1–2 m, 2–3 m, 3–4 m). Multiple machine learning and deep learning algorithms—including Random Forest, XGBoost, CatBoost, Multilater Perceptron Networks, and ensembles—were trained and validated using cross-validation. Systematic band-combination experiments and spatial aggregation strategies were tested to optimize prediction.
-Results show depth-dependent performance. At the surface, C2X-Complex with XGBoost and ensemble models achieved $R^2$ = 0.89; at 1–2 m, CatBoost and ensemble models reached $R^2$ = 0.87; at 2–3 m, TOA reflectances with KNN performed best ($R^2$ = 0.81); while at 3–4 m, Random Forest achieved $R^2$ = 0.66. Generated maps successfully reproduced known eutrophication events (e.g., 2016 crisis, 2025 surge), confirming robustness.
-The study delivers an end-to-end, validated methodology for depth-specific chlorophyll mapping, surpassing previous surface-only efforts. Its integration of multispectral band combinations, buoy calibration, and ML/DL modeling offers a transferable framework for other turbid coastal systems.
+The Mar Menor, Europe’s largest hypersaline coastal lagoon, located in southeastern Spain, has undergone severe eutrophication crises, with devastating impacts on biodiversity and water quality. Monitoring chlorophyll-a, a proxy for phytoplankton biomass, is essential to anticipate harmful algal blooms and guide mitigation. Traditional *in situ* measurements, while precise, are spatially and temporally limited. Satellite-based approaches provide a more comprehensive view, enabling scalable and long-term monitoring. This study aims to overcome limitations of chlorophyll monitoring, often restricted to surface estimates or limited temporal coverage, by developing a reliable methodology to predict and map chlorophyll-a concentrations across the water column of the Mar Menor. This work integrates Sentinel 2 imagery with buoy-based ground truth to create models capable of high-resolution, depth-specific monitoring, enhancing early-warning capabilities for eutrophication. 
+Nearly a decade of Sentinel 2 images were atmospherically corrected using C2RCC processors. Buoy data were aggregated by depth (0–1 m, 1–2 m, 2–3 m, 3–4 m). Multiple machine and deep learning algorithms, including CatBoost, XGBoost, Support Vector Machines, and Multilayer Perceptron Networks, were trained and validated using cross-validation. Band-combination experiments and spatial aggregation strategies were tested to optimize prediction. The results show depth-dependent performance. The Root Mean Squared Logarithmic Error (RMSLE) obtained ranges from 0.34 at the surface to 0.39 at 3–4 m, while the $R^2$ value was 0.76 at the surface, 0.76 at 1–2 m, 0.70 at 2–3 m, and 0.60 at 3–4 m. Generated maps successfully reproduced known eutrophication events (e.g., 2016 crisis, 2025 surge), confirming robustness. The study delivers an end-to-end, validated methodology chlorophyll mapping. Its integration of multispectral band combinations, buoy calibration, and modeling offers a transferable framework for other turbid coastal systems.
 
 ## Application examples
 
@@ -71,74 +68,81 @@ Update: an automated flux has been added to the repo (16/10/2025) with Docker. I
 The code is structured as follows:
 
 ```
+├── Aplicacion_GenerateGif.py # Script to create a gif with all depths
 ├── Aplicacion_Modelos.ipynb # Notebook to apply final models for each depth to new images and generate Chl-a prediction for each pixel, saved into csv. Uses the functions defined in Aplicacion_utils.py
 ├── Aplicacion_PlotTIFF.py # Script to plot tiff files (obtained from Aplicacion_TIFFfromCSV.py) using a custom colormap
 ├── Aplicacion_TIFFfromCSV.py # Script to generate tiff files from the csv's generated by Aplicacion_Modelos.ipynb
 ├── Aplicacion_utils.py # Script with functions to: extract reflectances for each pixel in the Mar Menor, split C2RCC processing methods into dataframes, add band combinations, and perform inference with the models
 ├── BuoyData # Folder with data from two sources: IMIDA and UPCT
-│   ├── boyaIMIDA
-│   │   ├── CTD-XX 
-│   │   │   ├── Chl-a (as Clorofila.csv) and other parameters such as temperature, oxygen and turbidity, among others
-│   └── boyaUPCT
-│       ├── extractedData
-│       │   ├── CTDXX
-│       │   │   ├── Chl-a (as Clorofila.csv) and other parameters such as temperature, oxygen and turbidity, among others.
-│       ├── locBoyasUPCT.csv # Buoys' coordinates
-│       └── locBoyasUPCT_reproyectado.csv # With another coordinate system
+│   ├── boyaIMIDA
+│   │   ├── CTD-XX 
+│   │   │   ├── Chl-a (as Clorofila.csv) and other parameters such as temperature, oxygen and turbidity, among others
+│   └── boyaUPCT
+│       ├── extractedData
+│       │   ├── CTDXX
+│       │   │   ├── Chl-a (as Clorofila.csv) and other parameters such as temperature, oxygen and turbidity, among others.
+│       ├── locBoyasUPCT.csv # Buoys' coordinates
+│       └── locBoyasUPCT_reproyectado.csv # With another coordinate system
 ├── Copernicus # Contains scripts and notebooks related to Sentinel 2 imagery
-│   ├── access_token_credentials.py # function to get access token
-│   ├── check_dates.py # script to check cloud coverage in the AOI
-│   ├── config.ini # passwords for the previous script
-│   ├── download_tiff.ipynb # Example to download L2A images for a specific AoI
-│   ├── Fechas_CloudCover.ipynb # Measurement of cloud cover for a predefined AoI and dates
-│   ├── productFetcher.py # Script to download SAFE files
-│   ├── productFetcher_tozip.py # Script to zip SAFE files
-│   ├── snap_batch.sh # bash script to process images with SNAP in the terminal
-│   ├── snap_graph.properties # SNAP Parameters for the bash script
-│   ├── snap_graph.xml # Graph of operations performed by SNAP
-│   ├── snap_batch_application.sh # As the previous, but with parameters needed specically to apply final models
-│   ├── snap_graph_application.properties
-│   ├── snap_graph_application.xml
-│   └── utils.py
+│   ├── access_token_credentials.py # function to get access token
+│   ├── config.ini # passwords for the previous script
+│   ├── download_tiff.ipynb # Example to download L2A images for a specific AoI
+│   ├── Fechas_CloudCover.ipynb # Measurement of cloud cover for a predefined AoI and dates
+│   ├── productFetcher.py # Script to download SAFE files
+│   ├── productFetcher_tozip.py # Script to zip SAFE files
+│   ├── snap_batch.sh # bash script to process images with SNAP in the terminal
+│   ├── snap_graph.properties # SNAP Parameters for the bash script
+│   ├── snap_graph.xml # Graph of operations performed by SNAP
+│   ├── snap_batch_application.sh # As the previous, but with parameters needed specically to apply final models
+│   ├── snap_graph_application.properties
+│   ├── snap_graph_application.xml
+│   └── utils.py
+├── Docker # Docker setup for automated map generation (see README inside)
 ├── Entrenamiento_Final.ipynb # Notebook to train all the models for the selected datasets, evaluation, and final training with the best configuration to save and apply in Aplicacion_Modelos.ipynb
 ├── extraNotebooks
-│   ├── Aplicacion_GenerateGif.py # Generate a gif with all depths
-│   ├── Comparacion_Boyas_UPCT_IMIDA_filtered.ipynb # Comparison between buoy data from the two sources used
-│   ├── Comparacion_Boyas_UPCT_IMIDA_raw.ipynb
-│   ├── Comparacion_Boyas_Zonas.ipynb # Clustering test to group bouys by zone
-│   ├── Datos_Boyas.ipynb # Visualization and descriptive analysis of buoy data
-│   ├── Entrenamiento_V3.ipynb # Preliminary test to implement cross validation into the flux
-│   ├── Replicar_Related_Extended.ipynb # Notebooks to replicate other articles
-│   ├── Replicar_Related.ipynb
-│   └── Replicar_Related_merged_dataset.ipynb
-│   └── Significancia_Resultados.ipynb # Wilcoxon signed-rank test for statistical significance
+│   ├── Comparacion_Boyas_UPCT_IMIDA_filtered.ipynb # Comparison between buoy data from the two sources used
+│   ├── Comparacion_Boyas_UPCT_IMIDA_raw.ipynb
+│   ├── Comparacion_Boyas_Zonas.ipynb # Clustering test to group bouys by zone
+│   ├── Datos_Boyas.ipynb # Visualization and descriptive analysis of buoy data
+│   ├── Entrenamiento_V3.ipynb # Preliminary test to implement cross validation into the flux
+│   ├── Replicar_Related_Extended.ipynb # Notebooks to replicate other articles
+│   ├── Replicar_Related.ipynb
+│   ├── Replicar_Related_merged_dataset.ipynb
+│   ├── Significancia_Resultados.ipynb # Wilcoxon signed-rank test for statistical significance
+│   └── utils.py
 ├── files # files used in the article and Mar Menor geojson
-├── Preparacion_Datasets.ipynb # Notebook to unify buoy data, load reflectances from processed images (with SNAP) and make window aggregations. Intermediate outputs saved into saved_files. Merge of bouy and satellite data and band combinations addition. csv outputs save into saved_files/dataset. Those are used in Seleccion_Parametros.ipynb
+├── hyperparams.json # Hyperparameter configuration used in training and hyperparameter selection
+├── input_file_seeds.txt # Input seeds file
+├── main.py # Entry point for training pipeline execution
+├── output_file_seeds.txt # Output seeds file
+├── Preparacion_Datasets.ipynb # Notebook to unify buoy data, load reflectances from processed images (with SNAP) and make window aggregations. Intermediate outputs saved into saved_files. Merge of buoy and satellite data and band combinations addition. csv outputs saved into saved_files/dataset. Those are used in Seleccion_Parametros.ipynb
+├── Process_Results.ipynb # Notebook to process and analyse training results
 ├── README.md
 ├── requirements.txt
+├── run.sh # Shell script to run the training pipeline
 ├── saved_files
-│   ├── application # Tiffs and pngs for several dates and depth
-│   │   ├── 2022-07-14_chl_map_0_1.png 
-│   │   ├── ...
-│   │   ├── 2022-07-14_chl_pred_loop.gif # Gif example
-│   │   ├── colormap_custom.txt # Custom colormap for the maps
-│   │   ├── preds # Outputs from Aplicacion_Modelos.ipynb go here. Empty beacuse each file is ~100mb.
-│   │   └── temp_csv # csv with reflectances for all the pixes obtained in Aplicacion_Modelos.ipynb go here. Empty because each file is ~250mb.
-│   ├── dataset # csv for every combination of (C2RCC processing x window aggregation x depth x with/without added features)
-│   ├── df_boyas_merge_depth_in_0_1.csv # Merged buoy data for each depth
-│   ├── ...
-│   ├── df_tifs_C2RCC_15x15.csv # Reflectances with different window aggregations and processing
-│   ├── df_tifs_C2X_9x9.csv
-│   ├── ...
-├── Seleccion_Parametros.ipynb # Hyperparameter seleccion with Optuna. Results saved in training_results
+│   ├── application # Tiffs and pngs for several dates and depth
+│   │   ├── 2022-07-14_chl_map_0_1.png 
+│   │   ├── ...
+│   │   ├── 2022-07-14_chl_pred_loop.gif # Gif example
+│   │   ├── colormap_custom.txt # Custom colormap for the maps
+│   │   ├── preds # Outputs from Aplicacion_Modelos.ipynb go here. Empty because each file is ~100mb.
+│   │   └── temp_csv # csv with reflectances for all the pixels obtained in Aplicacion_Modelos.ipynb go here. Empty because each file is ~250mb.
+│   ├── dataset # csv for every combination of (C2RCC processing x window aggregation x depth x with/without added features)
+│   ├── df_boyas_merge_depth_in_0_1.csv # Merged buoy data for each depth
+│   ├── ...
+│   ├── df_tifs_C2RCC_15x15.csv # Reflectances with different window aggregations and processing
+│   ├── df_tifs_C2X_9x9.csv
+│   ├── ...
+├── seeds.py # Script to generate or manage random seeds
+├── Seleccion_Parametros.ipynb # Hyperparameter selection with Optuna. Results saved in training_results
 ├── training_results
-│   ├── global_results.pkl
-│   ├── models # joblib with final models and json files with metadata
-│   ├── results_csv # train and test metrics (R2 and RMSE). Obtained in Entrenamiento_Final.ipynb
-│   ├── results_entrenamiento_final_in_0_1.pkl # Result from Entrenamiento_Final.ipynb
-│   ├── ...
-│   ├── selection_results_in_0_1.pkl # Results form Seleccion_Parametros.ipynb
-│   ├── ...
+│   ├── models # joblib with final models and json files with metadata
+│   ├── results_csv # train and test metrics (R2 and RMSE). Obtained in Entrenamiento_Final.ipynb
+│   ├── results_entrenamiento_final_in_0_1.pkl # Result from Entrenamiento_Final.ipynb
+│   ├── ...
+│   ├── selection_results_in_0_1.pkl # Results from Seleccion_Parametros.ipynb
+│   ├── ...
 └── utils.py
 
 ```

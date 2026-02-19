@@ -3,18 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe 
 from matplotlib.colors import ListedColormap, BoundaryNorm
-import geopandas as gpd  # <-- añadido
+import geopandas as gpd
 import fiona
+import os
 
 date = "2016-09-08"
 
 # Ruta al KML de batimetría
-bathymetry_kml_path = "files/MarMenorBathymetry.kml"
+bathymetry_kml_path = os.path.join(os.path.dirname(__file__), "saved_files/MarMenorBathymetry.kml")
 
-# Para Python 3.11
-# bathymetry_gdf = gpd.read_file(bathymetry_kml_path, driver="KML")
-# bathymetry_gdf = bathymetry_gdf.set_crs("EPSG:4326", allow_override=True)
-# Para Python 3.8.5
 # Leer KML una vez (asumimos EPSG:4326)
 # Workaround para Python 3.8.5 con versiones antiguas de fiona
 fiona.drvsupport.supported_drivers['KML'] = 'r'
@@ -26,6 +23,7 @@ bathymetry_gdf = bathymetry_gdf.set_crs("EPSG:4326", allow_override=True)
 colormap_path = "saved_files/application/colormap_custom.txt"
 
 depths = ["0_1", "1_2", "2_3", "3_4"]
+#depths = ["2_3"]
 for depth in depths:
 
     colors = []
@@ -57,6 +55,8 @@ for depth in depths:
     tick_locs = [(boundaries[i] + boundaries[i + 1]) / 2 for i in range(len(boundaries) - 1)]
     tick_labels = labels[:-1]  # Último valor ("inf") normalmente no se etiqueta
 
+
+    #with rasterio.open(f'saved_files/application/{date}_chl_map_{depth}_{MODEL}.tif') as src:
     with rasterio.open(f'saved_files/application/{date}_chl_map_{depth}.tif') as src:
         data = src.read(1)
         raster_crs = src.crs
@@ -73,7 +73,7 @@ for depth in depths:
     bathymetry_proj = bathymetry_gdf.to_crs(raster_crs)
 
     # === Crear figura ===
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))  # Tamaño ajustado para un solo plot
 
     # === Mostrar la imagen con colormap personalizado ===
     im = ax.imshow(
@@ -122,38 +122,9 @@ for depth in depths:
     ax.axis('off')
 
     plt.tight_layout()
+    plt.savefig(f'saved_files/application/{date}_chl_map_{depth}.pdf', dpi=300, bbox_inches='tight')
     plt.savefig(f'saved_files/application/{date}_chl_map_{depth}.png', dpi=300, bbox_inches='tight')
     plt.show()
 
-# -------------2 SUBPLOTS-----------
-# # === PLOTEO ===
-# with rasterio.open('saved_files/application/chl_pred_0_1.tif') as src1, rasterio.open('saved_files/application/chl_pred_1_2.tif') as src2:
-#     data1 = src1.read(1)
-#     data2 = src2.read(1)
 
-# fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-# # === Primer subplot ===
-# im1 = axes[0].imshow(data1, cmap=custom_cmap, norm=norm)
-# axes[0].set_title('chl_pred_0_1')
-# cb1 = plt.colorbar(im1, ax=axes[0], fraction=0.046, pad=0.04)
-# cb1.set_ticks(tick_locs)
-# cb1.set_ticklabels(tick_labels)
-# cb1.ax.tick_params(labelsize=7)
-# cb1.set_label("Chl mg/m³", fontsize=8, labelpad=5)
-
-# # === Segundo subplot ===
-# im2 = axes[1].imshow(data2, cmap=custom_cmap, norm=norm)
-# axes[1].set_title('chl_pred_1_2')
-# cb2 = plt.colorbar(im2, ax=axes[1], fraction=0.046, pad=0.04)
-# cb2.set_ticks(tick_locs)
-# cb2.set_ticklabels(tick_labels)
-# cb2.ax.tick_params(labelsize=7)
-# cb2.set_label("Chl mg/m³", fontsize=8, labelpad=5)
-
-# for ax in axes:
-#     ax.axis('off')
-
-# plt.tight_layout()
-# plt.savefig('saved_files/application/chl_pred_custom.png', dpi=300, bbox_inches='tight')
-# plt.show()

@@ -5,11 +5,13 @@ from rasterio.transform import from_origin
 import os
 
 path = "saved_files/application/preds/"
-filename = "2016-04-01_pred.csv"
+#MODEL = "CAT"
+filename = f"2016-09-08_pred.csv"
 date = filename[:10]
 df = pd.read_csv(os.path.join(path, filename))
 
 depths = ["0_1", "1_2", "2_3", "3_4"]
+#depths = ["2_3"]
 for depth in depths:
 
     print(f"Generating TIFF file for {date} in depth {depth}")
@@ -33,6 +35,7 @@ for depth in depths:
 
     with rasterio.open(
         f'saved_files/application/{date}_chl_map_{depth}.tif',
+        #f'saved_files/application/{date}_chl_map_{depth}_{MODEL}.tif',
         'w',
         driver='GTiff',
         height=data.shape[0],
