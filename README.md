@@ -153,15 +153,29 @@ To simplify map generation, a Docker folder has been added to the repository, wh
 
 # Cite
 
+Preprint available at https://doi.org/10.48550/arXiv.2510.09736 (arXiv), and https://zenodo.org/records/18769187 (Zenodo) (DOI's for arxiv and Zenodo are different)
+
 Style IEEE
 
-[1]A. Martínez Ibarra, A. González-Vidal, A. Cánovas Rodríguezy A. Skarmeta Gómez, «Chlorophyll-a Mapping and Prediction in the Mar Menor Lagoon Using C2RCC-Processed Sentinel 2 Imagery». Zenodo, oct. 10, 2025. doi: 10.48550/arXiv.2510.09736.
+A. Martínez-Ibarra, A. González-Vidal, A. Cánovas-Rodríguezy A. F. Skarmeta, «Chlorophyll-a Mapping and Prediction in the Mar Menor Lagoon Using C2RCC-Processed Sentinel 2 Imagery». Zenodo, feb. 24, 2026. doi: 10.5281/zenodo.18769187.
 
 Style APA
 
-Martínez Ibarra, A., González-Vidal, A., Cánovas Rodríguez, A., & Skarmeta Gómez, A. (2025). Chlorophyll-a Mapping and Prediction in the Mar Menor Lagoon Using C2RCC-Processed Sentinel 2 Imagery. Zenodo. https://doi.org/10.48550/arXiv.2510.09736
+Martínez-Ibarra, A., González-Vidal, A., Cánovas-Rodríguez, A., & Skarmeta, A. F. (2026). Chlorophyll-a Mapping and Prediction in the Mar Menor Lagoon Using C2RCC-Processed Sentinel 2 Imagery. Zenodo. https://doi.org/10.5281/zenodo.18769187
 
-Preprint available at https://doi.org/10.48550/arXiv.2510.09736 (arXiv), and https://zenodo.org/records/17357219 (Zenodo)
+BibTeX (arxiv)
+```
+@misc{martínezibarra2026chlorophyllamappingpredictionmar,
+      title={Chlorophyll-a Mapping and Prediction in the Mar Menor Lagoon Using C2RCC-Processed Sentinel 2 Imagery}, 
+      author={Antonio Martínez-Ibarra and Aurora González-Vidal and Adrián Cánovas-Rodríguez and Antonio F. Skarmeta},
+      year={2026},
+      eprint={2510.09736},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV},
+      url={https://arxiv.org/abs/2510.09736}, 
+}
+```
+
 
 ## Contact
 
