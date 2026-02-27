@@ -319,14 +319,37 @@ def run_optuna(df, nombre_df, target, n_trials, model_name, seed, models):
     )
     
 
-    # En optimización multi-objetivo, no hay un único "best"
-    # Optuna mantiene un conjunto de Pareto de soluciones no dominadas
-    # Seleccionamos el mejor trade-off (primera solución del frente de Pareto)
-    if study.best_trials:
-        best_trial = study.best_trials[0]
+    # En optimización multi-objetivo, no hay un único "best":
+    # Optuna mantiene un frente de Pareto de soluciones no dominadas.
+    # Ninguna de ellas es estrictamente mejor que las demás en AMBAS métricas.
+    # La selección de best_trials[0] no nos garantiza que el resultado se óptimo puesto que no hay orden.
+    #
+    # Estrategia de selección:
+    #   1. Tomamos todos los trials del frente de Pareto (study.best_trials).
+    #   2. Normalizamos RMSLE y R² al rango [0, 1] para hacerlos comparables.
+    #   3. Calculamos un score combinado: 65% RMSLE normalizado + 35% (1 - R² normalizado).
+    #      El factor (1 - r2_norm) invierte R² para que menor score = mejor R².
+    #   4. Seleccionamos el trial con el score combinado más bajo.
+    #
+    # Si solo hay 1 trial en el frente (o ninguno), se usa directamente ese.
+    pareto_trials = study.best_trials if study.best_trials else study.trials
+
+    if len(pareto_trials) > 1:
+        rmsle_vals = np.array([t.values[0] for t in pareto_trials])
+        r2_vals    = np.array([t.values[1] for t in pareto_trials])
+
+        # Normalización min-max (+ 1e-9 para evitar división por cero)
+        rmsle_norm = (rmsle_vals - rmsle_vals.min()) / (rmsle_vals.max() - rmsle_vals.min() + 1e-9)
+        r2_norm    = 1 - (r2_vals - r2_vals.min()) / (r2_vals.max() - r2_vals.min() + 1e-9)
+
+        # Score combinado: minimizar para mejor trial (arbitrario también, pero acorde a lo que se hace para seleccionar modelos posteriormente)
+        score = 0.65 * rmsle_norm + 0.35 * r2_norm
+
+        # Trial seleccionado: el de menor score combinado del frente de Pareto
+        best_trial = pareto_trials[int(np.argmin(score))]
     else:
-        # Fallback: usar el último trial si no hay best_trials
-        best_trial = study.trials[-1]
+        # Un único trial no dominado (o fallback si best_trials está vacío)
+        best_trial = pareto_trials[0]
     
     rmsle_val = best_trial.values[0]
     r2_val = best_trial.values[1]
