@@ -105,9 +105,9 @@ for path in tif_paths:
     ax.axis('off')
 
     # Texto con profundidad
-    ax.text(-0.3, 0.9, f'Depth {depth_str}', color='white', fontsize=24, fontweight='bold',
+    ax.text(-0.3, 0.9, f'Depth {depth_str} m', color='white', fontsize=16, fontweight='bold',
             ha='left', va='top', transform=ax.transAxes,
-            bbox=dict(facecolor='black', alpha=0.5, boxstyle='round,pad=0.3'))
+            bbox=dict(facecolor='black', alpha=0.5, boxstyle='round,pad=0.2'))
 
     # Colorbar personalizado (leyenda)
     cbar_ax = fig.add_axes([0.75, 0.15, 0.03, 0.75])

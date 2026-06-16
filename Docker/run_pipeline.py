@@ -19,6 +19,7 @@ model_dir = cfg.get("model_dir")
 pred_dir = cfg.get("pred_dir")
 map_dir = cfg.get("map_dir")
 geojson_file = cfg.get("geojson_file")
+geojson_dir = cfg.get("geojson_dir")
 colormap_file = cfg.get("colormap_file")
 bathymetry_map = cfg.get("bathymetry_map")
 
@@ -50,7 +51,7 @@ print(f"Tiempo transcurrido [3]: {t6 - t5:.2f} s")
 
 print(f"\n=== [4] Generando TIFFs ===")
 t7 = time.time()
-subprocess.run(["python3", "models/Aplicacion_TIFFfromCSV.py", "--date", fecha, "--input", pred_dir, "--output", map_dir], check=True)
+subprocess.run(["python3", "models/Aplicacion_TIFFfromCSV.py", "--date", fecha, "--input", pred_dir, "--output", map_dir, "--geojson_dir", geojson_dir], check=True)
 t8 = time.time()
 print(f"Tiempo transcurrido [4]: {t8 - t7:.2f} s")
 

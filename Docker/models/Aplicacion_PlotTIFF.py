@@ -66,11 +66,8 @@ for depth in depths:
         extent = [src.bounds.left, src.bounds.right, src.bounds.bottom, src.bounds.top]
         nodata = src.nodata
 
-    # Enmascarar nodata / NaN
-    if nodata is not None:
-        data = np.ma.masked_equal(data, nodata)
-    else:
-        data = np.ma.masked_invalid(data)
+    # Enmascarar nodata / NaN (masked_invalid cubre tanto NaN como el nodata float cuando es NaN)
+    data = np.ma.masked_invalid(data)
 
     # Reproyectar KML al CRS del raster
     bathymetry_proj = bathymetry_gdf.to_crs(raster_crs)
