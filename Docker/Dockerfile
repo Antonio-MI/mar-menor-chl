@@ -35,6 +35,14 @@ RUN wget -O /tmp/snap_installer_12.sh "https://download.esa.int/step/snap/12.0/i
     /tmp/snap_installer_12.sh -q -dir /opt/snap && \
     rm /tmp/snap_installer_12.sh
 
+# Acotar la memoria de la JVM de SNAP para que quepa en la RAM disponible.
+# Sin esto gpt intenta reservar ~32G; con poca RAM libre agota el swap y la
+# corrección atmosférica produce reflectancias degeneradas de forma no
+# determinista (mapas de un solo color unas veces sí y otras no). Ajustar el
+# valor a la RAM real de la máquina si hace falta.
+RUN sed -i '/^-Xmx/d' /opt/snap/bin/gpt.vmoptions && \
+    echo '-Xmx8G' >> /opt/snap/bin/gpt.vmoptions
+
 # === Crear estructura del proyecto ===
 WORKDIR /app
 # Copiar y instalar dependencias de Python

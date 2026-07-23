@@ -72,7 +72,21 @@ for input_file in "$INPUT_DIR"/*.SAFE.zip; do
     sed "s|inputFile=.*|inputFile=$input_file|; s|outputFile=.*|outputFile=$output_file|" "$TEMPLATE_PARAMS" > "$param_file"
 
     # Ejecutar gpt
+    #  -c 4G  limita la caché de tiles (debe ser < -Xmx de gpt.vmoptions)
+    #  -q 4   limita el paralelismo
+    # Ambos acotan el pico de memoria y hacen el procesado más determinista.
     echo "Procesando $filename → $output_file"
-    "$GPT" "$GRAPH_XML" -p "$param_file"
+    "$GPT" "$GRAPH_XML" -p "$param_file" -c 4G -q 4
+    gpt_status=$?
+    if [ "$gpt_status" -ne 0 ]; then
+        echo "ERROR: gpt falló para $filename (código $gpt_status). Abortando." >&2
+        exit 1
+    fi
+
+    # La corrección atmosférica debe haber generado un TIFF no vacío.
+    if [ ! -s "$output_file" ]; then
+        echo "ERROR: no se generó el TIFF de salida $output_file. Abortando." >&2
+        exit 1
+    fi
 done
 
